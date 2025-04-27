@@ -3,9 +3,12 @@ import axios from "axios";
 const BookCard = ({ id, title, author, onDelete }) => {
   const handleDownload = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/download/${id}`, {
-        responseType: "blob",
-      });
+      const response = await axios.get(
+        `https://book-chem-store.vercel.app/download/${id}`,
+        {
+          responseType: "blob",
+        }
+      );
 
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
