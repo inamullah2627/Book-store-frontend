@@ -2,6 +2,7 @@ import { useState } from "react";
 import BookList from "./Components/BookList";
 import UploadForm from "./Components/UploadForm";
 import { useRef } from "react";
+import BookListWrapper from "./Components/BookList";
 
 function App() {
   const [books, setBooks] = useState([
@@ -105,7 +106,8 @@ function App() {
             <UploadForm onUpload={handleUpload} />
           </div>
         )}
-        <BookList books={books} onDelete={handleDelete} />
+        {/* <BookList books={books} onDelete={handleDelete} /> */}
+        <BookListWrapper />
       </div>
     </div>
   );
