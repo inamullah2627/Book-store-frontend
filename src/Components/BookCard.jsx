@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BookCard = ({ id, title, author, fileUrl, onDelete, thumbnail }) => {
+const BookCard = ({ id, title, author, onDelete }) => {
   const handleDownload = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/download/${id}`, {
@@ -38,12 +38,20 @@ const BookCard = ({ id, title, author, fileUrl, onDelete, thumbnail }) => {
 
   return (
     <div className="p-1 rounded shadow-sm shadow-white">
-      <img
-        src={thumbnail}
-        alt={title}
-        className="w-full h-auto max-h-80 object-contain rounded"
-      />
-      <h2 className="font-bold text-lg">{title}</h2>
+      <div className="w-full h-48 flex items-center justify-center bg-gray-100 rounded">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-24 w-24 text-red-500"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M6 2C4.897 2 4 2.897 4 4v16c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V8l-6-6H6zm7 1.414L18.586 9H14c-.553 0-1-.447-1-1V3.414zM6 20V4h6v5c0 1.103.897 2 2 2h5v9H6z" />
+          <text x="7" y="17" fontSize="6" fill="currentColor" fontWeight="bold">
+            PDF
+          </text>
+        </svg>
+      </div>
+      <h2 className="font-bold text-lg mt-2">{title}</h2>
       <p className="text-gray-600">{author}</p>
       <button
         onClick={handleDownload}
